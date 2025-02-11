@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     class: 'icon', // default <Icon> class applied
     mode: 'css', // default <Icon> mode applied
     aliases: {
-      'nuxt': 'logos:nuxt-icon',
+      'nuxt': 'logos:nuxt-icon ',
     }
   },
   components: [
