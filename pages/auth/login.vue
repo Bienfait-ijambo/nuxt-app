@@ -1,34 +1,92 @@
 <script setup>
 definePageMeta({
-    layout:'auth',
-})
+  layout: "auth",
+});
 
-const user=ref({
-    name:"ben",
-    email:"ben@example.com",
-    password:"password"
-})
+const loginInput = ref({
+  email: "",
+  password: "",
+});
+
+const loading = ref(false);
+const config = useRuntimeConfig();
+
 async function loginUser() {
-  const res = await $fetch('http://localhost:8000/api/login', {
-    method: 'POST',
-    body: JSON.stringify(user.value)
-  })
-  console.log(res)
+  try {
+    loading.value = true;
+    const res = await $fetch(config.public?.API_BASE_URL + "/login", {
+      headers: {
+        Accept: "application/json",
+        "content-type": "application/json",
+      },
+
+      method: "POST",
+      body: JSON.stringify(loginInput.value),
+    });
+    loading.value = false;
+
+
+    localStorage.setItem('userData', JSON.stringify({
+      user:res?.user,
+      token:res?.token
+    }))
+     window.location.href='/admin/dashboard'
+    
+
+    // successMsg(res?.message)
+  } catch (error) {
+    loading.value = false;
+    if (error?.response?.status === 401) {
+     showError(error.response?._data?.message)
+
+    }
+  
+    if (error?.response?.status === 422) {
+      const errors = error.response?._data;
+
+      for (const message of errors) {
+        showError(message);
+      }
+    }
+  }
 }
 </script>
 <template>
-    <div class="flex  justify-between">
-        <div></div>
-        <div class=" w-[300px] mt-20">
-            <h1 class="text-2xl">Login</h1>
-            <input type="text" placeholder="E-mail"
-            class="px-2 py-2 w-[100%] rounded-md mb-2 text-sm shadow-sm">
-            <input type="text" placeholder="Password"
-            class="px-2 py-2 w-[100%] mb-2  rounded-md text-sm shadow-sm">
-            <NuxtLink to="/auth/register" class="hover:underline">register ?</NuxtLink>
-            <button @click="loginUser" class="text-white bg-indigo-500  rounded-md px-2 py-2 w-[100%] mt-4">Login</button>
+  <div class="bg-slate-100 h-screen">
+    <div class="flex justify-between">
+      <div></div>
+      <div class="w-[300px] mt-20">
+        <div class="flex flex-col gap-2">
+          <h1 class="text-2xl">Login</h1>
+          <input
+            type="text"
+            name=""
+            v-model="loginInput.email"
+            placeholder="E-mail"
+            id=""
+            class="py-2 px-2 text-sm rounded-md shadow-sm focus:ring focus:ring-blue-300"
+          />
+          <input
+            v-model="loginInput.password"
+            type="password"
+            name=""
+            placeholder="password"
+            id=""
+            class="py-2 px-2 text-sm rounded-md shadow-sm focus:ring focus:ring-blue-300"
+          />
+          <NuxtLink to="/auth/register" class="text-indigo-700 font-semibold">
+            Create an account
+          </NuxtLink>
+          <button
+            @click="loginUser"
+            :disabled="loading"
+            class="rounded-md text-white py-2 bg-indigo-700 text-sm font-semibold"
+          >
+            {{ loading ? "Processing..." : "Login" }}
+          </button>
         </div>
-        <div></div>
-
+      </div>
+      <div></div>
     </div>
+  </div>
 </template>

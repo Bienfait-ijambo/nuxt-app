@@ -1,43 +1,32 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
-  icon: {
-    size: '20px', // default <Icon> size applied
-    class: 'icon', // default <Icon> class applied
-    mode: 'css', // default <Icon> mode applied
-    aliases: {
-      'nuxt': 'logos:nuxt-icon ',
-    }
-  },
+  devtools: { enabled: false },
+
   components: [
     {
       path: '~/components',
       pathPrefix: false,
     },
   ],
+  plugins: [
+    '~/plugins/foo/foo',
+    '~/plugins/foo/baz/baz',
 
-  // nitro: {
-  //   experimental: {
-  //     database: true
-  //   },
-  //   database: {
-  //     default: {
-  //       connector: 'sqlite',
-  //       options: { name: 'db' }
-  //     },
-  //     users: {
-  //       connector: 'postgresql',
-  //       url: process.env.DATABASE_URL
-  //     }
-  //   }
-  // },
-  
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/icon']
-  // 
+
+  ],
+  runtimeConfig: {
+    public: {
+      BASE_URL: process.env.BASE_URL,
+      API_BASE_URL: process.env.API_BASE_URL,
+
+    }
+  },
+
+
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt']
+
+
 })
 
 
-// TO LEARN IN nuxtjs
-// - handling errors
-// - use cookies

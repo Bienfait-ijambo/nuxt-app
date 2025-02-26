@@ -1,1 +1,0 @@
-import{_ as o,o as t,c as a,a as r,H as c}from"./B9w754QG.js";const n={},l={class:"bg-slate-200 h-screen"};function d(s,e){return t(),a("div",l,[e[0]||(e[0]=r("a",{href:"/"},"Move to welcome page",-1)),c(s.$slots,"default")])}const _=o(n,[["render",d]]);export{_ as default};

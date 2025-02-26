@@ -1,9 +1,13 @@
 <script setup>
-
 definePageMeta({
-    layout:'admin'
-})
+  layout: "admin",
+});
+
 </script>
 <template>
-    <h1>dashbaord</h1>
+  <div class="h-screen bg-slate-100">
+  <h1>Dashboard</h1>
+
+   
+  </div>
 </template>
