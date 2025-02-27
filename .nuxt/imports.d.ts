@@ -32,5 +32,6 @@ export { getUserData } from '../utils/getUserData';
 export { promptUser } from '../utils/sweet-alert';
 export { showError, successMsg } from '../utils/toast-notification';
 export { usePostStore } from '../stores/post-store';
+export { useUploadPostImage } from '../stores/upload-post-image-store';
 export { defineStore, acceptHMRUpdate, usePinia, storeToRefs } from '../node_modules/@pinia/nuxt/dist/runtime/composables';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

@@ -69,8 +69,18 @@ function deletePost(id) {
   });
 }
 
+
+const router=useRouter()
+const postStore=usePostStore()
+const {postInput,edit}=storeToRefs(postStore)
+
+const uploadPostStore=useUploadPostImage()
+const {modalVal}=uploadPostStore
+
 function editPost(post){
-    console.log(post)
+  postInput.value=post
+  edit.value=true
+  router.push('/admin/create-post')
 }
 
 
@@ -78,6 +88,11 @@ function editPost(post){
 <template>
   <div>
     <h1 class="text-2xl mb-2">Post-list</h1>
+    <UploadPostImage
+      :show="modalVal"
+      @getPosts="refresh"
+      :postId=""
+    />
     <PostListTable
       @searchPost="searchPost"
       :status="status"

@@ -3,46 +3,9 @@ definePageMeta({
   layout: "admin",
 });
 
-const postInput = ref({
-  title: "",
-  post_content: "",
-});
 
-const userData = getUserData();
-
-const config = useRuntimeConfig();
-
-const loading = ref(false);
-
-async function createPost() {
-  try {
-    loading.value = true;
-    const res = await $fetch(config.public?.API_BASE_URL + "/posts", {
-      headers: {
-        Accept: "application/json",
-        "content-type": "application/json",
-        Authorization: `Bearer ${userData?.token}`,
-      },
-
-      method: "POST",
-      body: JSON.stringify(postInput.value),
-    });
-    loading.value = false;
-   postInput.value ={}
-
-    successMsg(res?.message);
-  } catch (error) {
-    loading.value = false;
-
-    if (error?.response?.status === 422) {
-      const errors = error.response?._data;
-
-      for (const message of errors) {
-        showError(message);
-      }
-    }
-  }
-}
+const postStore=usePostStore()
+const {postInput,loading,edit}=storeToRefs(postStore)
 
 </script>
 <template>
@@ -75,10 +38,10 @@ async function createPost() {
         </NuxtLink>
         <button
           :disabled="loading"
-          @click="createPost"
-          class="rounded-md text-white px-2 py-2 bg-indigo-700 text-sm font-semibold"
+          @click="postStore.createPost"
+          :class="edit?' bg-yellow-500 rounded-md text-white px-2 py-2 text-sm font-semibold ':' bg-indigo-700 rounded-md text-white px-2 py-2 text-sm font-semibold  '"
         >
-          {{ loading ? "processing...." : " Create a Post" }}
+          {{ loading ? "processing...." : edit ? 'Update':'Create'}}
         </button>
       </div>
     </div>
