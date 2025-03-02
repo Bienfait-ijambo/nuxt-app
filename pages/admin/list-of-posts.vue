@@ -75,7 +75,7 @@ const postStore=usePostStore()
 const {postInput,edit}=storeToRefs(postStore)
 
 const uploadPostStore=useUploadPostImage()
-const {modalVal}=uploadPostStore
+const {modalVal}=storeToRefs(uploadPostStore)
 
 function editPost(post){
   postInput.value=post
@@ -84,14 +84,14 @@ function editPost(post){
 }
 
 
+
 </script>
 <template>
   <div>
-    <h1 class="text-2xl mb-2">Post-list</h1>
+    <h1 class="text-2xl mb-2">Post-list </h1>
     <UploadPostImage
       :show="modalVal"
       @getPosts="refresh"
-      :postId=""
     />
     <PostListTable
       @searchPost="searchPost"
@@ -99,6 +99,7 @@ function editPost(post){
       @editPost="editPost"
       :posts="data?.data?.data"
       @deletePost="deletePost"
+      @uploadImage="uploadPostStore.showModal"
     />
 
     <TailwindPagination

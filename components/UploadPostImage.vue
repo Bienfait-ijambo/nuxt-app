@@ -1,9 +1,11 @@
 <script setup>
-const props = defineProps(["show","postId"]);
-const emit=defineProps(['getPosts'])
+const props = defineProps(["show"]);
+const emit=defineEmits(['getPosts'])
 
 const image=ref(null)
 const uploadPostStore=useUploadPostImage()
+const {config}=uploadPostStore
+
 const loading=ref(false)
 
 
@@ -21,14 +23,15 @@ function selectImage(event) {
 async function uploadPostImage(){
 
     try{
-        const payloadHeader=await uploadPostStore.uploadImagePayload(props.postImage,image.value)
-        const res=await fetch(config.public.API_URL,pauloadHeader) 
+        const payloadHeader=await uploadPostStore.uploadImagePayload(uploadPostStore.postId,image.value)
+        const res=await fetch(config.public?.API_BASE_URL+'/posts/upload-image',payloadHeader) 
         const data=await res.json()
         successMsg(data?.message)
         emit('getPosts')
          document.querySelector("#outputImage").src = "";
             document.querySelector('#imageInput').value=''
-
+        
+        
     }catch(error){
         showError(error?.message)
     }

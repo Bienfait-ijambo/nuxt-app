@@ -30,7 +30,7 @@ async function loginUser() {
       user:res?.user,
       token:res?.token
     }))
-     window.location.href='/admin/dashboard'
+     window.location.href='/admin/list-of-posts'
     
 
     // successMsg(res?.message)

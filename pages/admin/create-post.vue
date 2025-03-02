@@ -11,7 +11,6 @@ const {postInput,loading,edit}=storeToRefs(postStore)
 <template>
   <div>
     <h1 class="text-2xl mb-2">Create-Post</h1>
-
     <div class="flex flex-col mb-2 w-[600px]">
       <div class="flex flex-col mb-3">
         <input
@@ -20,13 +19,25 @@ const {postInput,loading,edit}=storeToRefs(postStore)
           type="text"
           class="mb-2 border rounded-md py-1 px-2 shadow-md"
         />
-        <textarea
+      <!-- <textarea
           v-model="postInput.post_content"
           name=""
           id=""
           rows="5"
           class="mb-2 border rounded-md py-1 px-2 shadow-md"
-        ></textarea>
+        ></textarea>  -->
+
+        <ClientOnly fallback-tag="span" fallback="Loading comments...">
+          <rich-editor
+           :value="postInput.post_content" 
+          @input="event => postInput.post_content = event" />
+        </ClientOnly>
+        
+
+        
+     
+   
+
       </div>
 
       <div class="flex justify-between">

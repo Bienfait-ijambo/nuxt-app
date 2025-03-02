@@ -80,6 +80,9 @@
       "#build/*": [
         "./*"
       ],
+      "laravel-vue-pagination": [
+        "../node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.es"
+      ],
       "#app": [
         "../node_modules/nuxt/dist/app"
       ],
@@ -96,7 +99,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/dev"
+        "./manifest/meta/d0967d61-16dc-4245-9dcc-e42845b1992f.json"
       ],
       "#components": [
         "./components"

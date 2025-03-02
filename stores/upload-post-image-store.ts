@@ -3,9 +3,11 @@ import { ref } from "vue"
 import { defineStore } from 'pinia'
 export const useUploadPostImage = defineStore('upload-post-store', () => {
 const modalVal=ref(false)
+const postId=ref(null)
 
-function showModal(){
+function showModal(id:any){
     modalVal.value=true
+    postId.value=id
 }
 function hideModal(){
     modalVal.value=false
@@ -48,7 +50,8 @@ function uploadImagePayload(postId:string,image:string){
        showModal,
        hideModal,
        modalVal,
-       config
+       config,
+       postId
     }
 
 

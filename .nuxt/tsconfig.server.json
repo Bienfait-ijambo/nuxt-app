@@ -101,6 +101,9 @@
       "#internal/nuxt/paths": [
         "../node_modules/nuxt/dist/core/runtime/nitro/paths"
       ],
+      "laravel-vue-pagination": [
+        "./laravel-vue-pagination/dist/laravel-vue-pagination.es"
+      ],
       "#vue-router": [
         "./vue-router"
       ]

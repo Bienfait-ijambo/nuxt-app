@@ -2,10 +2,12 @@
 import type { DefineComponent, SlotsType } from 'vue'
 type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refresh: () => Promise<void>}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, SlotsType<{ fallback: { error: unknown } }>>
 interface _GlobalComponents {
-      'BaseModal': typeof import("../components/BaseModal.vue")['default']
+      'ArticleList': typeof import("../components/ArticleList.vue")['default']
+    'BaseModal': typeof import("../components/BaseModal.vue")['default']
     'Links': typeof import("../components/Links.vue")['default']
     'PostListTable': typeof import("../components/PostListTable.vue")['default']
     'UploadPostImage': typeof import("../components/UploadPostImage.vue")['default']
+    'RichEditor': typeof import("../components/rich-editor.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
     'NuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
     'NuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -29,10 +31,12 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
-      'LazyBaseModal': typeof import("../components/BaseModal.vue")['default']
+      'LazyArticleList': typeof import("../components/ArticleList.vue")['default']
+    'LazyBaseModal': typeof import("../components/BaseModal.vue")['default']
     'LazyLinks': typeof import("../components/Links.vue")['default']
     'LazyPostListTable': typeof import("../components/PostListTable.vue")['default']
     'LazyUploadPostImage': typeof import("../components/UploadPostImage.vue")['default']
+    'LazyRichEditor': typeof import("../components/rich-editor.vue")['default']
     'LazyNuxtWelcome': typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
     'LazyNuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
     'LazyNuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -62,10 +66,12 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
+export const ArticleList: typeof import("../components/ArticleList.vue")['default']
 export const BaseModal: typeof import("../components/BaseModal.vue")['default']
 export const Links: typeof import("../components/Links.vue")['default']
 export const PostListTable: typeof import("../components/PostListTable.vue")['default']
 export const UploadPostImage: typeof import("../components/UploadPostImage.vue")['default']
+export const RichEditor: typeof import("../components/rich-editor.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -89,10 +95,12 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
+export const LazyArticleList: typeof import("../components/ArticleList.vue")['default']
 export const LazyBaseModal: typeof import("../components/BaseModal.vue")['default']
 export const LazyLinks: typeof import("../components/Links.vue")['default']
 export const LazyPostListTable: typeof import("../components/PostListTable.vue")['default']
 export const LazyUploadPostImage: typeof import("../components/UploadPostImage.vue")['default']
+export const LazyRichEditor: typeof import("../components/rich-editor.vue")['default']
 export const LazyNuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const LazyNuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const LazyNuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
