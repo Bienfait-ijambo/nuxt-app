@@ -619,7 +619,7 @@ const _routes = [
     name: "admin-list-of-posts",
     path: "/admin/list-of-posts",
     meta: __nuxt_page_meta$2 || {},
-    component: () => import('./list-of-posts-BVazhYi0.mjs')
+    component: () => import('./list-of-posts-CiqqWIpB.mjs')
   },
   {
     name: "auth-login",
@@ -636,7 +636,7 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-CM6OT_8W.mjs')
+    component: () => import('./index-CXr5tqmF.mjs')
   },
   {
     name: "post-slug",

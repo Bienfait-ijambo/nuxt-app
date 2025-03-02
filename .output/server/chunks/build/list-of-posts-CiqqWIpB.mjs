@@ -4,7 +4,7 @@ import { _ as _export_sfc, u as useRuntimeConfig, a as useRouter } from './serve
 import { defineStore, storeToRefs } from 'pinia';
 import { g as getUserData } from './getUserData-Byhv7ZZL.mjs';
 import { u as usePostStore, s as successMsg, a as showError } from './post-store-Cv5zXvoE.mjs';
-import { TailwindPagination as ie } from './laravel-vue-pagination.es-jGPo6fcI.mjs';
+import { TailwindPagination } from 'laravel-vue-pagination';
 import { u as useFetch } from './fetch-qrtDBLgm.mjs';
 import Swal from 'sweetalert2';
 import '../_/nitro.mjs';
@@ -327,7 +327,7 @@ const _sfc_main = {
         onDeletePost: deletePost,
         onUploadImage: unref(uploadPostStore).showModal
       }, null, _parent));
-      _push(ssrRenderComponent(unref(ie), {
+      _push(ssrRenderComponent(unref(TailwindPagination), {
         class: "mt-2",
         data: (_c = unref(data)) == null ? void 0 : _c.data,
         onPaginationChangePage: paginateData
@@ -345,4 +345,4 @@ _sfc_main.setup = (props, ctx) => {
 const listOfPosts = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-1c639599"]]);
 
 export { listOfPosts as default };
-//# sourceMappingURL=list-of-posts-BVazhYi0.mjs.map
+//# sourceMappingURL=list-of-posts-CiqqWIpB.mjs.map

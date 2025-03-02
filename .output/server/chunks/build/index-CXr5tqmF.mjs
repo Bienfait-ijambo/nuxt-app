@@ -1,6 +1,7 @@
 import { _ as __nuxt_component_0 } from './nuxt-link-DyhS5YwV.mjs';
-import { withAsyncContext, ref, mergeProps, unref, useSSRContext, withCtx, createTextVNode, toDisplayString } from 'vue';
+import { ref, withAsyncContext, mergeProps, unref, useSSRContext, withCtx, createTextVNode, toDisplayString } from 'vue';
 import { ssrRenderAttrs, ssrRenderComponent, ssrRenderList, ssrRenderAttr, ssrInterpolate } from 'vue/server-renderer';
+import { TailwindPagination } from 'laravel-vue-pagination';
 import { u as useRuntimeConfig } from './server.mjs';
 import { u as useFetch } from './fetch-qrtDBLgm.mjs';
 import '../_/nitro.mjs';
@@ -75,8 +76,6 @@ const _sfc_main = {
   __ssrInlineRender: true,
   async setup(__props) {
     let __temp, __restore;
-    const LaravelVuePagination = ([__temp, __restore] = withAsyncContext(() => import('./laravel-vue-pagination.es-jGPo6fcI.mjs').then((m) => m.default || m)), __temp = await __temp, __restore(), __temp);
-    const { TailwindPagination } = LaravelVuePagination;
     const config = useRuntimeConfig();
     const page = ref(1);
     const { data, error, status, refresh } = ([__temp, __restore] = withAsyncContext(() => {
@@ -95,8 +94,12 @@ const _sfc_main = {
         "$PslAyef5YX"
       );
     }), __temp = await __temp, __restore(), __temp);
+    const paginateData = async (newPageVal) => {
+      page.value = newPageVal;
+      await refresh();
+    };
     return (_ctx, _push, _parent, _attrs) => {
-      var _a, _b, _c, _d;
+      var _a, _b, _c;
       const _component_ArticleList = _sfc_main$1;
       _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen flex flex-col items-center justify-start px-4 sm:px-8 lg:px-16" }, _attrs))}>`);
       _push(ssrRenderComponent(_component_ArticleList, {
@@ -104,15 +107,11 @@ const _sfc_main = {
         posts: (_b = (_a = unref(data)) == null ? void 0 : _a.data) == null ? void 0 : _b.data
       }, null, _parent));
       _push(`<div class="w-full flex justify-center mt-6">`);
-      if ((_c = unref(data)) == null ? void 0 : _c.data) {
-        _push(ssrRenderComponent(unref(TailwindPagination), {
-          class: "mt-4 p-2 bg-white shadow-md rounded-lg w-full sm:w-auto",
-          data: (_d = unref(data)) == null ? void 0 : _d.data,
-          onPaginationChangePage: _ctx.paginateData
-        }, null, _parent));
-      } else {
-        _push(`<!---->`);
-      }
+      _push(ssrRenderComponent(unref(TailwindPagination), {
+        class: "mt-4 p-2 bg-white shadow-md rounded-lg w-full sm:w-auto",
+        data: (_c = unref(data)) == null ? void 0 : _c.data,
+        onPaginationChangePage: paginateData
+      }, null, _parent));
       _push(`</div></div>`);
     };
   }
@@ -125,4 +124,4 @@ _sfc_main.setup = (props, ctx) => {
 };
 
 export { _sfc_main as default };
-//# sourceMappingURL=index-CM6OT_8W.mjs.map
+//# sourceMappingURL=index-CXr5tqmF.mjs.map

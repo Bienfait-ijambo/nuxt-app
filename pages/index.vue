@@ -1,6 +1,6 @@
 <script setup>
-const LaravelVuePagination = await import('laravel-vue-pagination').then(m => m.default || m);
-const { TailwindPagination } = LaravelVuePagination; // Extracting the component
+
+import { TailwindPagination } from "laravel-vue-pagination";
 
 const config = useRuntimeConfig();
 const page = ref(1);
@@ -27,10 +27,12 @@ const paginateData = async (newPageVal) => {
   <div class="min-h-screen flex flex-col items-center justify-start px-4 sm:px-8 lg:px-16">
 
     <!-- Article List -->
+    
     <ArticleList 
       class="w-full mt-10 mb-10 "
       :posts="data?.data?.data"
     />
+   
 
     <!-- Pagination -->
     <div class="w-full flex justify-center mt-6">
