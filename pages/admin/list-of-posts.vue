@@ -1,5 +1,9 @@
 <script setup>
-import { TailwindPagination } from "laravel-vue-pagination";
+
+const LaravelVuePagination = await import('laravel-vue-pagination').then(m => m.default || m);
+const { TailwindPagination } = LaravelVuePagination; // Extracting the component
+
+
 definePageMeta({
   layout: "admin",
 });
@@ -94,6 +98,7 @@ function editPost(post){
       @getPosts="refresh"
     />
     <PostListTable
+    v-if="data?.data"
       @searchPost="searchPost"
       :status="status"
       @editPost="editPost"
@@ -101,8 +106,14 @@ function editPost(post){
       @deletePost="deletePost"
       @uploadImage="uploadPostStore.showModal"
     />
+       
+ <span v-else class="shadow-md px-2 py-2 rounded-md mt-20 text-gray-900 border font-semibold text-center">No data found
+      <br>
+      Check your internet connection
+    </span>
 
     <TailwindPagination
+    v-if="data.data"
       class="mt-2"
       :data="data?.data"
       @pagination-change-page="paginateData"

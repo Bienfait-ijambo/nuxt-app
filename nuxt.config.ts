@@ -24,6 +24,13 @@ export default defineNuxtConfig({
     }
   },
   
+  build: {
+    transpile: ["laravel-vue-pagination"]
+  },
+  alias: {
+    'laravel-vue-pagination': 'laravel-vue-pagination/dist/laravel-vue-pagination.es.js'
+  },
+  
 
 
   modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt']

@@ -26,16 +26,7 @@ defineProps(['posts']);
           {{ post?.title }}
         </NuxtLink>
         
-        <!-- Short Description -->
-       
-        
-        <!-- Read More Link -->
-        <NuxtLink
-          :to="'/post/'+post?.slug"
-          class="text-sm font-medium text-blue-500 hover:text-blue-700 transition-colors duration-300"
-        >
-          Read more &rarr;
-        </NuxtLink>
+     
       </div>
     </div>
   </div>
