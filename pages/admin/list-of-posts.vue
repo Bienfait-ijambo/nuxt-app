@@ -114,10 +114,14 @@ function editPost(post){
 
     <TailwindPagination
     v-if="data.data"
-      class="mt-2"
+      class="mt-2 mb-10"
       :data="data?.data"
       @pagination-change-page="paginateData"
     />
+    <br>
+    <br>
+    <br>
+
   </div>
 </template>
 <style scoped>

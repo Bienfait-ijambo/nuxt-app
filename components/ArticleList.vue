@@ -3,15 +3,15 @@ defineProps(['posts']);
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-8 justify-center">
+  <div  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     <div
       v-for="post in posts"
       :key="post?.id"
-      class="max-w-full sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105"
+      class=" bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105"
     >
       <!-- News Image -->
       <img
-        class="w-full h-60 object-cover"
+        class="w-full h-60  object-cover"
         :src="post?.image"
         alt="News image"
       />

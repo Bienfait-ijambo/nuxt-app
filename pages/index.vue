@@ -33,7 +33,7 @@ const paginateData = async (newPageVal) => {
     
     <ArticleList 
     v-if="data?.data"
-      class="w-full mt-10 mb-10 "
+      class="mt-10 mb-10 "
       :posts="data?.data?.data"
     />
     
